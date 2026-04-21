@@ -1,5 +1,7 @@
 import pepita.*
 import comidas.*
+import direcciones.*
+
 // import niveles.*
 import extras.*
 import wollok.game.*
@@ -10,7 +12,15 @@ program PepitaGame {
 	game.width(30)
 	game.boardGround("fondo2.jpg")
 
+	keyboard.up().onPressDo({ pepita.mover(arriba) })
+    // keyboard.up().onPressDo({if(pepita.position().y() < self.height()-1) visual.position(visual.position().up(1)) })
+    // keyboard.down().onPressDo({if(visual.position().y() > 0) visual.position(visual.position().down(1)) })
+    // keyboard.right().onPressDo({if (visual.position().x() < self.width()-1) visual.position(visual.position().right(1)) })
+    // keyboard.left().onPressDo({if (visual.position().x() > 0) visual.position(visual.position().left(1)) })
+
+	keyboard.c().onPressDo({pepita.comer("?")})
+
+	game.addVisual(silvestre)
   	game.addVisualCharacter(pepita)
-  	game.addVisual(silvestre)
 	game.start()
 }
