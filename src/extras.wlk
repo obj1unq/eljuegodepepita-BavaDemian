@@ -15,4 +15,9 @@ object silvestre {
 
       return if(xPresa >= 3) xPresa else 3
     }
+
+    method atrapar() {
+      game.removeVisual(presa)
+      game.stop()
+    }
 }

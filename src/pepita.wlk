@@ -8,9 +8,10 @@ object pepita {
 	var property image = "pepita-" + self.estado() + ".png"
 	method positionX() = position.x()
 
-	// method image() = "pepita.png"
+	method color() = "ffffff"
+	method text() = "\n\n\n\n" + energia
 
-	method text() = energia
+	// method image() = "pepita.png"
 
 	method estado() {
 		return if(self.atrapada()) "gris" else "libre"
@@ -18,24 +19,28 @@ object pepita {
 
 	method comer(comida) {
 		energia = energia + comida.energiaQueOtorga()
+		game.removeVisual(comida)
 	}
 
 	method atrapada() = self.position() == perseguidor.position()
 
-	method pepitaGris() {
-	  if(not null.atrapada()){
-		self.image("pepita-gris.png")
-	  }
-	}
-
 	method mover(direccion) {
-	  position = direccion.siguiente(position)
+		position = direccion.siguiente(position)
+		self.volar(1)
+	//   const oldPosition = position
+	//   if (energia >= 9) position = direccion.siguiente(position) else self.caer()
+	//   if (oldPosition != position) self.volar(1)
 	}
 
 	method volar(kms) {
-		energia = energia - 10 - kms 
+		energia = energia - 9 * kms 
 	}
 	
+	method caer() {
+		position = game.at(position.x(), 0)
+		silvestre.atrapar()
+	}
+
 	method energia() = energia
 }
 
