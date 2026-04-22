@@ -18,7 +18,7 @@ program PepitaGame {
     // keyboard.right().onPressDo({if (visual.position().x() < self.width()-1) visual.position(visual.position().right(1)) })
     // keyboard.left().onPressDo({if (visual.position().x() > 0) visual.position(visual.position().left(1)) })
 
-	keyboard.c().onPressDo({pepita.comer("?")})
+	keyboard.c().onPressDo({ pepita.comer("?") })
 
 	game.addVisual(silvestre)
   	game.addVisualCharacter(pepita)
