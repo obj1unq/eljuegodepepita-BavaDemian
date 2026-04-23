@@ -32,13 +32,12 @@ object pepita {
 
 	method atrapada() = self.position() == perseguidor.position()
 
-	method mover(direccion) {
-		if (not viva) self.error("Estoy muerta")
-		if (energia >= 9) position = direccion.siguiente(position) else self.caer()
-		self.volar(1)
+	// method mover(direccion) {
+	// 	if (not viva) self.error("Estoy muerta")
+	// 	if (energia >= 9) position = direccion.siguiente(position) else self.caer()
+	// 	self.volar(1)
 	//   const oldPosition = position
 	//   if (oldPosition != position) self.volar(1)
-	}
 
 	method volar(kms) {
 		energia = energia - 9 * kms 

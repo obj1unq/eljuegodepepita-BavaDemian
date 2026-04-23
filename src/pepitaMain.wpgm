@@ -25,12 +25,12 @@ object nivel1 {
 		game.onCollideDo(manzana, { alguien => alguien.comer(manzana) })
 		game.onCollideDo(silvestre, { alguien => alguien.morir() })
 		keyboard.w().onPressDo(
-		{ try {
-			pepita.mover(arriba)
-		} catch e : wollok.lang.Exception {
-			console.println("NO PODES MOVER")
-		} }
-		)
+			{ try {
+				pepita.mover(arriba)
+			} catch e : wollok.lang.Exception {
+				console.println("NO PODES MOVER")
+			} }
+			)
 		keyboard.s().onPressDo(
 			{ try {
 				pepita.mover(abajo)
@@ -57,8 +57,6 @@ object nivel1 {
 		// keyboard.right().onPressDo({if (visual.position().x() < self.width()-1) visual.position(visual.position().right(1)) })
 		// keyboard.left().onPressDo({if (visual.position().x() > 0) visual.position(visual.position().left(1)) })
 		// keyboard.c().onPressDo({ pepita.comer(game.uniqueCollider(pepita)) })
-		// Apretar el número 0 termina el Juego
-		keyboard.num0().onPressDo({ game.stop() })
 
 		game.addVisual(manzana)
 		game.addVisual(silvestre)
