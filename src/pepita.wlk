@@ -32,8 +32,13 @@ object pepita {
 
 	method atrapada() = self.position() == perseguidor.position()
 
-	// method mover(direccion) {
-	// 	if (not viva) self.error("Estoy muerta")
+	method mover(direccion) {
+		if (estado == viva) {
+			viva.mover(direccion)
+		} else {
+			muerta.mover(direccion)
+		}
+	}
 	// 	if (energia >= 9) position = direccion.siguiente(position) else self.caer()
 	// 	self.volar(1)
 	//   const oldPosition = position
