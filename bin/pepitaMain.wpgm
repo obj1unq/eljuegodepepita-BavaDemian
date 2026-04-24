@@ -1,0 +1,67 @@
+import pepita.*
+import comidas.*
+import direcciones.*
+// import niveles.*
+import extras.*
+import wollok.game.*
+
+program PepitaGame {
+	game.title("Pepita")
+	game.height(15)
+	game.width(30)
+	game.boardGround("fondo2.jpg")
+	
+	nivel1.init()
+	game.start()
+}
+
+object nivel1 {
+	method init() {
+		pepita.init()
+		game.clear()
+		keyboard.x().onPressDo({ self.init() })
+
+		game.onCollideDo(manzana, { alguien => alguien.comer(manzana) })
+		game.onCollideDo(silvestre, { alguien => alguien.morir() })
+		keyboard.w().onPressDo(
+			{ try {
+				pepita.mover(arriba)
+			} catch e : wollok.lang.Exception {
+				console.println("NO PODES MOVER")
+			} }
+			)
+		keyboard.s().onPressDo(
+			{ try {
+				pepita.mover(abajo)
+			} catch e : wollok.lang.Exception {
+				console.println("NO PODES MOVER")
+			} }
+			)
+		keyboard.a().onPressDo(
+			{ try {
+				pepita.mover(izquierda)
+			} catch e : wollok.lang.Exception {
+				console.println("NO PODES MOVER")
+			} }
+			)	
+		keyboard.d().onPressDo(
+			{ try {
+				pepita.mover(derecha)
+			} catch e : wollok.lang.Exception {
+				console.println("NO PODES MOVER")
+			} }
+			)
+		// keyboard.up().onPressDo({if(pepita.position().y() < self.height()-1) visual.position(visual.position().up(1)) })
+		// keyboard.down().onPressDo({if(visual.position().y() > 0) visual.position(visual.position().down(1)) })
+		// keyboard.right().onPressDo({if (visual.position().x() < self.width()-1) visual.position(visual.position().right(1)) })
+		// keyboard.left().onPressDo({if (visual.position().x() > 0) visual.position(visual.position().left(1)) })
+		// keyboard.c().onPressDo({ pepita.comer(game.uniqueCollider(pepita)) })
+
+		game.addVisual(manzana)
+		game.addVisual(silvestre)
+		game.addVisual(pepita)
+
+	
+	
+	}
+}
