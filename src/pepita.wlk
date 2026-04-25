@@ -16,16 +16,21 @@ object pepita {
 	// method image() = "pepita.png"
 
 	method init() {
-		self.estado(viva)
+		self.vivir()
 		position = game.at(3, 5)
 		energia = 250
 	}
 
 	method atrapada() = self.position() == perseguidor.position() 
 
+	method vivir() {
+		self.estado(viva)
+		self.image("pepita-libre.png")
+	}
+	
 	method morir() {
-		self.image("pepita-gris.png")
 		self.estado(muerta)
+		self.image("pepita-gris.png")
 	}
 
 	method comer(comida) {
