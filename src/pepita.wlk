@@ -5,13 +5,17 @@ object pepita {
 	var energia = 250
 	var perseguidor = silvestre
 	var property position = game.at(3, 5)
-	var property image = "pepita-libre.png"
+	var property image = "pepita-" + self.estadoImage() + ".png"
 	var property estado = viva
 
 	method positionX() = position.x()
 
 	method color() = "ffffff"
 	method text() = "\n\n\n\n" + energia
+
+	method estadoImage() {
+		return if(self.estado() == viva) "libre" else "gris"
+	}
 
 	// method image() = "pepita.png"
 
